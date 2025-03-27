@@ -1,0 +1,31 @@
+<!--　カウントアップアプリ
+画面に数字とボタンが配置され、ボタンを押すたびに画面上の数字に１が加算される。数字は０始まり-->
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset = "utf-8">
+    </head>
+    <body>
+        <!--ボタンの配置-->
+        <!--javascriptでこの数値を書き換えるので、DOMを探索しやすいようにclass属性を設定-->
+        <div class="counter">0</div>
+        <button class="countup" type="button">+1</button>
+        <script>
+
+            //ボタンのオブジェクト要素を作成。
+            const countupButton = document.querySelector('.countup');
+            //ボタンをクリックした時の動作の動きを設定。
+            countupButton.addEventListener('click',function(){
+                //counterの数値を取得する。
+                const counter = document.querySelector('.counter');
+                //10に達したら、アラート表示して、加算されないようにする。
+                let count = parseInt(counter.textContent);
+                if(count == 10){
+                    alert('10に達したので、これ以上押せません');
+                }else{
+                    counter.textContent =  parseInt(counter.textContent) + 1;
+                }
+            });
+        </script>
+    </body>
+</html>
