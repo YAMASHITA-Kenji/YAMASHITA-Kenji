@@ -1,0 +1,71 @@
+<!--ページをスクロールすると、上に戻るボタンが現れて、画面の一番上まで自動でスクロールが戻る
+    ・上に戻るボタンは最初は非表示、画面を縦にスクロールするとボタンが表示される。
+    ・一番上まで戻るとボタンが非表示になる
+-->
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            .moveToTop{
+                /*positionプロパティは、要素を画面上の任意の位置に配置することができる。fixedは、スクロールとは無関係に、指定した位置に表示される*/
+                position: fixed;
+                /*fixedは、スクロールとは無関係に、指定した位置に表示される*/
+                bottom: 20px;
+                right: 20px;
+                /*ボタンを初期設定では、非表示にする*/
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <!--ダミーテキストの表示-->
+        <div class="dummy"></div>
+        <!--上に戻るボタンの生成-->
+        <button type="button" class="moveToTop">上に戻る</button>
+        <script>
+            //長いテキストを生成する
+            const dummyContent = document.querySelector('.dummy');
+            for(let i=0; i<1000; i++){
+                dummyContent.textContent += `　テキスト　${i}`;
+            }
+
+            //スクロールイベントを使って、非表示になっているボタンを表示させる
+            window.addEventListener('scroll',function(){
+                const button = document.querySelector('.moveToTop');
+
+                /*
+                //スクロールを縦に200pxスクロールしたらボタンを表示させる
+                if(window.scrollY >= 200){
+                    button.style.display = 'block';
+                }else{
+                    button.style.display = 'none';
+                }
+                */
+
+                //ページの半分までスクロールしたらボタンが表示される
+                //clientHeightで、画面の縦の最大値を取得する。
+                //const scrollHeight = document.body.clientHeight;
+                //if(window.scrollY >= parseInt(scrollHeight)/2){
+                if(window.scrollY >= document.body.clientHeight/2){
+                    button.style.display = 'block';
+                }else{
+                    button.style.display = 'none';
+                }
+
+                //スクロールボタンを押すと、一番上に戻る。
+                button.addEventListener('click',function(){
+                    //window.scrollToで、スクロール位置を操作する
+                    window.scrollTo({
+                        //縦スクロールの位置
+                        top: 0,
+                        //スクロールの挙動を滑らかにする
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

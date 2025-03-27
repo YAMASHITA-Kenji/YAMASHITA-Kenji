@@ -1,0 +1,100 @@
+<!DOCTYPE html>                 <!--宣言-->
+<html>                          <!--最初に必ず書く要素。ルート要素。-->
+<head>                          <!--メタデータ部（メタ→コンテンツの順）-->
+    <meta charset="UTF-8">      <!--使用する文字コード方式。慣例でheadの直下に書く-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">   <!--meta：モバイル端末に画面設定情報を伝える-->
+    <!-- ボックス確認用
+    <style>
+        *{
+            outline: 1px solid #FF0000;
+        }
+    </style> -->
+    <title>お問い合わせ ｜ KUZIRA CAFE</title>  <!--HPのページ名-->
+    <link rel="stylesheet" href="css/style.css">    <!--cssファイルとの関連付け。rel属性はstylesheet、href属性には本ファイルからのcssファイル相対パスを記載する-->
+</head>
+<body>                          <!--コンテンツ部-->
+    <!--ヘッダー-->
+    <header class="header">                    <!--ヘッダー部-->
+        <!--div：汎用ブロックタグ。なんの意味も持たない。class:クラス属性の設定。id属性と違い、複数の場所に設定することが可能。CSSで一律設定することができるようになる。また、半角スペースを用いる子で一つの場所に複数のクラス属性を設定できる。（例）class="logo top"。さらに、id属性との共存も可能。（例）<h2 id="aaa" class="bbb>"-->
+        <div class="logo"> 
+            <a href="index.html"><img src="images/logo.svg" alt="KUZIRA CAFE"></a>  <!--img：画像を表示させる空要素。画像にリンクを設定することもできる-->
+        </div>
+        <nav class="nav">
+            <ul>                <!--ナビゲーション部-->
+                <!--
+                    aでリンクであることを示し、hrefでリンク先（パス）を指定する
+                    サーバやPC上にあるファイルを指定する場合は、パスで表現する。絶対パスかindexファイルのいる位置から../ や ○○/～ といった相対パスで。
+                -->
+                <li><a href="index.html">ホーム</a></li>
+                <li><a href="index.html#news">お知らせ</a></li> <!--ページ内リンクに飛ぶ場合は、「URLorPass + # + id属性の値」をhrefに設定する-->
+                <li><a href="index.html#shop">店舗情報</a></li>
+                <li><a href="access.html">アクセス</a></li>
+                <li><a href="menu.html">メニュー</a></li>
+                <li><a href="contact.html">お問い合わせ</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!--ヘッダーここまで-->
+
+    <h1 class="hero contact">お問い合わせ</h1>   <!--見出し。H1>...>H6は、重要度順。h1の中にh2,h2の中にh3というネスト構造で記述する-->
+    
+    <!--メイン-->
+    <main>  <!--main:中心となる内容をまとめるタグ-->
+        <!--form：フォーム全体の親要素タグ。フォーム作成で必須。action属性には入力内容送信先のURLを記述する-->
+        <form action="result.html"> 
+            <p>
+                <!--label：（使い方１）指定した文字列をクリックすると、for属性で記述したidタグに関連するセレクトリストが選択状態になる。なお、idタグは送信されない。-->
+                <label for="kind">お問い合わせの種類</label><br>
+                <!--select：セレクトリストタグ。この中にoptionタグで選択するものを記述する。なお、name、valueは送信先処理プログラムが必要とする情報で、必ずつけること。-->
+                <select name="kind" id="kind">
+                    <option value="1">ご予約</option>
+                    <option value="2">イベントに関するお問い合わせ</option>
+                    <option value="3">その他</option>
+                </select>
+
+                <!--radio：ラジオボタンタイプ。必須回答かつ一つしか選ばせたくない場合に使用する。name属性value属性必須。同じ設問の場合は同じname属性をつけること。-->
+                <p>
+                    はじめてのご来店ですか？<br>
+                     <!--input：フォーム部品（空要素）　label：（使い方２）チェックボックスタイプをこのタグではさむと、文字列をクリックしても選択されるようになる。-->
+                    <label><input type="radio" name="first" value="yes" checked>はい</label><br>    <!--checked属性をつけるとデフォルトでそこが選択されている状態となる-->
+                    <label><input type="radio" name="first" value="no">いいえ</label>
+                </p>
+
+                <!--checkbox：チェックボックスタイプ。複数選択もしくは一つも選択しないということが可能。name属性value属性必須。同じ設問の場合は同じname属性をつけること。-->
+                <p>
+                    当カフェをお知りになったきっかけは？<br>
+                    <label><input type="checkbox" name="how" value="friend">知り合いの紹介で</label><br>
+                    <label><input type="checkbox" name="how" value="magazine">SNS、Webサイト、雑誌などを見て</label>
+                </p>
+
+                <!--text：テキストタイプ。比較的短いテキストの入力に適している。name属性必須。-->
+                <p>
+                    <label for="subject">お問い合わせの件名</label><br>
+                    <input type="text" name="subject" placeholder="タイトル" id="subject">  <!--placeholder属性は、フィールド内に入力のヒントとなるテキストを記載する-->
+                </p>
+
+                <!--textarea：複数行のテキストが入力でき、途中で改行することもできるフォーム部品。name属性必須。-->
+                <p>
+                    <label for="message">お問い合わせの具体的な内容</label><br>
+                    <textarea name="message" id="message"></textarea>
+                </p>
+
+                <!--input type="submit：入力内容の送信ボタンの作成。ボタンの名前はvalueで設定する。-->
+                <p class="submit">
+                    <input type="submit" value="送信">
+                </p>
+            </p>
+        </form>
+
+    </main>
+    <!--メインここまで-->
+    <!--フッター-->
+    <hooter>                    <!--フッター部-->
+        <div class="gotop">
+            <a href="index.html#top"><img src="images/gotop.svg" alt="ページトップへ戻る"></a>
+        </div>
+        <p class="copyright">&copy; KUZIRA CAFE</p>   <!--文字実体参照により、&copy;で著作権記号を表示-->
+    </hooter>
+    <!--フッターここまで-->
+</body>
+</html>

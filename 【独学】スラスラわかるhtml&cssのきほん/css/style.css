@@ -1,0 +1,243 @@
+/* すべてのページに適用される設定 */
+html{
+    font-size: 16px;    /*フォントサイズの設定。px=96分の16インチ（約4.23mm、1インチ=2.54cm）*/
+    font-family: sans-serif;   /*フォントの種類の設定。sans-serifはゴシック体*/
+}
+*{
+    /*box-sizing: border-boxで、すべての要素に対してwidth,heightプロパティで指定する値をボーダー領域まで含むように設定している。しない場合は、コンテンツ領域までしか指定できないため、レスポンシブデザインの際にうまく調整できなくなる不都合が生じる*/
+    box-sizing: border-box;
+}
+body{
+    /*
+        margin：ショートハンドプロパティ。上右下左の順で一度に設定できる（top,bottomといちいち記述しなくよい）。区切りは半角スペース。０を設定するときは単位不要。
+        なお、bodyタグ全体のマージンを0にするように設定。bodyタグはデフォルトで8pxのマージンが設定されている。
+    */
+    margin: 0 0 0 0;    
+}
+p,li,td{
+    line-height: 1.7;   /*行間の設定（line-heightはフォントサイズの何倍かを示す）。p,li,tdタグに適用するように記述。*/
+}
+/*
+    :link：疑似クラス。href属性が設定されているものをさす（通常の<a>タグ）。
+    疑似クラスと<a>タグの間に半角スペースは入れずに記載することで「<a>タグで、かつ:link状態の要素」を選択している。
+    もし半角スペースを入れると、子孫セレクタを指定することになるため、「<a>タグの子孫要素で:link状態の要素（ありえない要素）」を選択してしまい、結果何にも適用されないので注意。
+*/
+a:link{
+    color: #f07d34;
+    text-decoration: none;    /*テキストに線を引くプロパティ。noneは何もひかない。*/
+}
+a:visited{  /*:visited：疑似クラス。リンク先が訪問済の状態をさす。:linkと同様の注意*/
+    color: #f07d34;
+    text-decoration: none;        /*テキストに線を引くプロパティ。noneは何もひかない。*/
+}
+a:hover{    /*:hover：疑似クラス。マウスポインタがリンクに乗っている状態をさす。:linkと同様の注意。スマートフォンやタブレットには:hover状態はないため、動作が微妙に異なるので注意。よく確認すること。*/
+    color: #f07d34;
+    text-decoration: underline;        /*テキストに線を引くプロパティ。underlineは下線を引く。*/
+}
+a:active{   /*:active：疑似クラス。マウスポインタが押されている状態をさす。:linkと同様の注意*/
+    color: #f07d34;
+    text-decoration: underline;    /*テキストに線を引くプロパティ。underlineは下線を引く。*/
+}
+img{
+    /*max-width100%が適用されたタグは、その親要素のボックス幅（ここではmain）に合わせて伸縮する。ただし、もともとの画像の大きさ以上にはならない。スマホやタブレット等を考慮する現状では必ず書くスタイル*/
+    max-width: 100%;
+}
+
+/* すべてのページに適用 - ヘッダー */
+.header{  /*.クラス名:classセレクタ。指定するクラス名に対してスタイルを適用する*/
+    padding-top: 40px;
+    background-image: url(../images/stripe.png);    /*background-image：ボックスに背景画像を表示させる（デフォルトで縦横に繰り返し表示）。URLはHTMLファイルを起点とした相対パスで記述する。*/
+    background-repeat: repeat-x;    /*background-repeat：ボックスに表示させる背景画像を繰り返し表示させる。repeat：縦横、repeat-x：横、repeat-y：縦、no-repeat：繰り返さない*/
+}
+.logo{  
+    text-align: center;     /*text-○○○：左右中央揃えができる。left（左揃え）,center（中央揃え）,right（右揃え）。*/
+}
+.nav ul{
+    /*marginとpaddingについて、①値を１つだけ設定すると４辺すべてに、②２つは上下・左右に、③３つは上・左右・下に適用される、という省略記述が可能。*/
+    margin: 30px 0 0 0; /*ナビゲーション項目とタイトルとの間にスペースを入れる*/
+    padding: 0;         /*ナビゲーション項目を左に寄せる*/
+    list-style-type: none;  /*list-style-type：<li>番号なしリスト項目の点を、好きなマークに変えることができる。変えたいマークを""で指定する（例）"→"。消す場合はnoneを記述する。*/
+
+    display: flex;  /*display: flex：同一の親要素を持つ兄弟要素を横一列に並べる書式（フレックスボックスという）。適用する場合はその親要素を指定する。*/
+    justify-content: center;  /*justify-content：フレックスボックスに指定した項目の配置を扱う。center：中央、left：左、right：右*/
+    gap: 40px;  /*gap：フレックスボックスの項目間にスペースを入れる。*/
+}
+/*CSSは同じ要素に適用される場合、優先度によって上書きされる。優先度は、要素が絞られるほど高くなる。*/
+.nav a:link{
+    color: #253958;
+}
+.nav a:visited{
+    color: #253958;
+}
+.nav a:hover{
+    color: #253958;
+}
+.nav a:active{
+    color: #253958;
+}
+
+
+/* すべてのページに適用 - ヒーロー */
+.hero{  /*がheroクラスに所属するタグを指定している。*/
+    padding: 137px 0;               /*画像のパディングを上下137pxとしてデフォルト設定する。*/
+    background-repeat: no-repeat; /*hero内の背景画像が繰り返されないようにするために設定*/
+    background-position: center; /*background-○○○○：○○○○の設定に合わせて背景画像をボックス内に表示させる。centerはhero内の背景画像がボックスの中心にくる*/
+    background-size: cover;      /*background-size：ブラウザサイズに合わせて伸縮をする場合の優先度を決めるプロパティ。contein：画像全体表示、cover：ボックス全体を塗りつぶすように表示*/
+    color:#FFFFFF;              /*文字列を白色に設定する。*/
+    text-align: center;     /*h1のテキストを中央揃えにするために設定*/
+}
+.hero.index{    /*heroクラスかつindexクラスに所属するタグを指定している。*/
+    padding: 287px 0;
+    background-image: url(../images/home-hero.jpg);     /*h1のボックスに背景画像を設定。*/
+}
+.hero.access{    /*heroクラスかつaccessクラスに所属するタグを指定している。*/
+    background-image: url(../images/access-hero.jpg);     /*h1のボックスに背景画像を設定。*/
+}
+.hero.menu{    /*heroクラスかつmenuクラスに所属するタグを指定している。*/
+    background-image: url(../images/menu-hero.jpg);     /*h1のボックスに背景画像を設定。*/
+}
+.hero.contact{    /*heroクラスかつcontactクラスに所属するタグを指定している。*/
+    background-image: url(../images/contact-hero.jpg);     /*h1のボックスに背景画像を設定。*/
+}
+
+/* すべてのページに適用 - メイン */
+main{
+    /*
+        ブラウザのウィンドウサイズに合わせて左右中央に配置されるように設定する。
+        ブロックボックスであるmainタグは、同様にブロックボックスである親要素のbodyタグのブロックボックスに合わせられる。そのbodyタグはウィンドウサイズに合わせて伸縮するので結果mainタグがウィンドウサイズに合わせて伸縮するようになっている。
+        しかし、文章が横に広がりすぎると見づらいため、max-widthで最大幅を設定し、その幅に合わせてマージンが自動的に均等になるように、marginの右、左にautoを記述している。なお、max-width以下のウィンドウサイズになった場合は効果は発揮されない。
+        この設定により、実質的に中央に配置されるようになる。
+    */
+    margin: 90px auto 90px auto;    /*左右をautoとすることで、モバイル端末でも見れるようにしている*/
+    max-width: 1000px;  /*max-width：伸縮する最大幅を1000pxに設定して見やすくする。*/
+}
+main h2{                /*子孫セレクタ（子要素の子要素）で表現してmain内の全h2を設定。*/
+    margin: 60px 0 20px 0;
+    /*
+        border-bottom：border関連プロパティの一つ。底辺に線をひく。線の太さ、線の形状、線の色を半角スペースで区切って記述する。順番は不定。
+        solid：実線、点線：dotted、少し長い点線：dashed、線なし：none（noneの場合は線の太さ、線の形状は省略可）
+    */
+    border-bottom: 2px solid #253958;
+    padding: 0 0 5px 0;
+    color: #253958;  /*フォントの色の設定。色は16進数。*/
+    font-size: 1.3rem;    /*フォントサイズの設定。1remはhtmlに設定したフォントサイズ。*/
+}
+
+
+/* すべてのページに適用 - フッター */
+.gotop{
+    text-align: center;  
+}
+.copyright{
+    margin-top: 20px;   /*マージン領域の上部を広げている*/
+    margin-bottom: 0;   /*マージン領域の下部を０にしている*/
+    padding-top: 75px;  /*パディング領域の上部を広げている*/
+    padding-bottom: 75px;   /*パディング領域の下部を広げている*/
+    background-color: #253958;  /*背景色の設定。色は16進数。塗りつぶしの場合はボーダー領域とパディング領域まで塗りつぶされる*/
+    color: #FFFFFF;
+    text-align: center;  
+}
+
+
+/* 個別のスタイル */
+/* index.html */
+.logo-whole{
+    text-align: center; 
+}
+
+.shop-info{
+    /*
+        テーブルセルに罫線を引くと、セル毎に引かれるため二重になってしまう場合がある。解消するため、border-collapseを使用し、
+        解消する。
+    */
+    border-collapse: collapse;  /*border-collapse：境界を共有するか分離するかを設定。collapse：共有、separate：分離*/
+}
+
+.shop-info th, .shop-info td{       /*thとtd両方に罫線を引く。なお、テーブルセルにはマージン領域がない。*/
+    border: 1px solid #dbdbdb;
+    padding: 20px;
+}
+
+/*テーブルのセル内の文字列設定。デフォルトだと上下左右に中央揃えで改行ありとなる。*/
+.shop-info th{
+    width: 112px;           /*セル幅の調整*/
+    text-align: left;       /*text-align：左右の行揃え。leftで左揃え*/
+    vertical-align: top;    /*vertical-align：上下の行揃え。top：上端揃え、middle：上下中央揃え、bottom：下端揃え*/
+}
+
+/* menu.html */
+.items{
+    /*画像をグリッドレイアウトで、３行３列にする。*/
+    display: grid;      /*display:grid：子要素のボックスが、グリッドレイアウトになる。*/
+    /*grid-template-columns：グリッドの列方向の操作をする。列の幅と数。frは○分の○の意味をもち、1frをn回繰り返せば、ひとつがN分の1で均等表示される。*/
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;      /*列の間に20pxの間隔を作る*/
+}
+
+/* contact.html */
+/*フォーム全体のレイアウトとして、左右中央に配置するために調整する*/
+form{
+    margin: 0 auto;
+    max-width: 640px;
+}
+/*フォームの幅や高さ、フォントサイズを整える*/
+/*[]：属性セレクタ。タグの属性やその設定値を要素の選択に利用するもの。この指定でないと、インプット系は正しく設定されないみたい。*/
+input[type="text"], textarea{/*inputタグで、type属性がtextになっている要素（テキストフィールドのこと）を選択している*/
+    padding: 6px;
+    width: 100%;
+    font-size: 1rem;
+}
+/*お問い合わせの具体的な内容の高さを整える*/
+textarea{
+    height: 140px;
+}
+/*送信ボタン（クラス名submit）のデザイン変更*/
+.submit{
+    text-align: center; /*送信ボタンを中央揃えする*/
+}
+input[type="submit"]{
+    border: none;    /*送信ボタンの境界線を消す*/
+    padding: 20px;       /*送信ボタンのパディング領域を広くする*/
+    width: 200px;        /*送信ボタンを高さを大きくする*/
+    background-color: #253958;   /*送信ボタンの背景色を設定する*/
+    color: #FFFFFF;      /*送信ボタンの「送信」の文字を白色にする*/
+    font-size:1rem;      /*送信ボタンのフォントサイズを1remにする。1remはhtmlに設定したフォントサイズ。*/
+}
+
+/*モバイル対応*/
+/*
+　メディアクエリの設定。画面幅○○以下ならこういうスタイルを適用する、画面幅が○○以上ならこうする、というように主に画面サイズの大きさでスタイルを切り替える.
+  @media(条件：値）：条件を満たす場合に適用するスタイルを記述する。　
+*/
+@media(max-width: 767px){ 
+ /*
+ 　画面幅が767px以下の端末の場合に適用する。767pxは標準的な9.7インチタブレットの短い辺の画面幅。これよりも大きいものはPC版で表示させる。
+ 　ちなみに、このＣＳＳが切り替わる境界線の数値をブレイクポイントという。
+ */
+    .nav ul{    /*ナビゲーションを２行表示するように記述する*/
+        flex-wrap: wrap;    /*flex-wrap：入りきらなくなったら改行するかしないかを設定する。wrap：改行する、nowrap：改行しない*/
+        gap: 20px;  /*行間のスペースを設定する。上下左右20pxとする*/
+    }
+    main{   /*テキストや画像が画面の両端とくっついてしまうため、余白を設定する。*/
+        padding: 0 4%;  /*%で指定すると画面幅の割合で設定することができる。モバイル端末の画面サイズはさまざまなため割合で設定する。*/
+    }
+    /* index.html */
+    .hero.index{   /*ヒーロー画像が画面内に収まり切れない可能性があるため、大きさを調整する。*/
+        padding: 28vh 0;    /*vh:ビューポイント・ハイトの略。全体の高さを100vhとした時の表示割合を設定する。28vhとすると画面の高さの28%という意味となる。今回の設定ではh1のパディング上下左右においてそれぞれ28%としている*/
+    }
+    .items{     /*メニューページの表示が3列では狭く感じるため、列数を変更する。*/
+        grid-template-columns: 1fr 1fr;     /*2列にする*/
+    }
+}
+
+
+/*
+  レスポンスデザイン（モバイル端末に対応する）について
+    重要なテクニック３つ
+    （１）画面幅もしくはウィンドウ幅に合わせてページの横幅が伸縮するように作る
+    　　→　max-width: 1000px;、box-sizing: border-box;のように、画面幅に合わせるように調整する。
+    （２）表示できる面積に合わせて画像を伸縮するように作る
+        →　background-size: cover、margin: 90px auto 90px auto;のように、画像が中央に表示されたりするように調整する。
+    （３）画面サイズに合わせて最適なスタイルに切り替える
+        →　メディアクエリ
+*/

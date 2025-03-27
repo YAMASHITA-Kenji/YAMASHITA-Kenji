@@ -1,0 +1,124 @@
+<!DOCTYPE html>                 <!--宣言-->
+<html>                          <!--最初に必ず書く要素。ルート要素。-->
+<head>                          <!--メタデータ部（メタ→コンテンツの順）-->
+    <meta charset="UTF-8">      <!--使用する文字コード方式。慣例でheadの直下に書く-->
+    <!--meta：モバイル端末に画面設定情報を伝える。-->
+    <!--モバイル端末の初期設定はブラウザを縮小する仕様になっている。それを以下の内容で解除させる。なお記述内容はどんな場合でも以下のように記述して問題ない。-->
+    <meta name="viewpoint" content="width=device-width, initial-scale=1">
+    <!-- ボックス確認用
+    <style>
+        *{
+            outline: 1px solid #FF0000;
+        }
+    </style> -->
+    <title>メニュー ｜ KUZIRA CAFE</title>  <!--HPのページ名-->
+    <link rel="stylesheet" href="css/style.css">    <!--cssファイルとの関連付け。rel属性はstylesheet、href属性には本ファイルからのcssファイル相対パスを記載する-->
+</head>
+<body>                          <!--コンテンツ部-->
+    <!--ヘッダー-->
+    <header class="header">                    <!--ヘッダー部-->
+        <!--div：汎用ブロックタグ。なんの意味も持たない。class:クラス属性の設定。id属性と違い、複数の場所に設定することが可能。CSSで一律設定することができるようになる。また、半角スペースを用いる子で一つの場所に複数のクラス属性を設定できる。（例）class="logo top"。さらに、id属性との共存も可能。（例）<h2 id="aaa" class="bbb>"-->
+        <div class="logo"> 
+            <a href="index.html"><img src="images/logo.svg" alt="KUZIRA CAFE"></a>  <!--img：画像を表示させる空要素。画像にリンクを設定することもできる-->
+        </div>
+        <nav class="nav">
+            <ul>                <!--ナビゲーション部-->
+                <!--
+                    aでリンクであることを示し、hrefでリンク先（パス）を指定する
+                    サーバやPC上にあるファイルを指定する場合は、パスで表現する。絶対パスかindexファイルのいる位置から../ や ○○/～ といった相対パスで。
+                -->
+                <li><a href="index.html">ホーム</a></li>
+                <li><a href="index.html#news">お知らせ</a></li> <!--ページ内リンクに飛ぶ場合は、「URLorPass + # + id属性の値」をhrefに設定する-->
+                <li><a href="index.html#shop">店舗情報</a></li>
+                <li><a href="access.html">アクセス</a></li>
+                <li><a href="menu.html">メニュー</a></li>
+                <li><a href="contact.html">お問い合わせ</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!--ヘッダーここまで-->
+
+    <h1 class="hero menu">メニュー</h1>   <!--見出し。H1>...>H6は、重要度順。h1の中にh2,h2の中にh3というネスト構造で記述する-->
+    
+    <!--メイン-->
+    <main>  <!--main:中心となる内容をまとめるタグ-->
+        <div class="items">
+            <div class="item">
+                <img src="images/item1.jpg" alt="オリジナルカプチーノ">
+                <p>     <!--p：段落タグ。この中に文章を記述する-->
+                    オリジナルカプチーノ<br>
+                    <strong>¥600-</strong>      <!--strong：テキスト就職タグの一つ。重要の意味を持ち、太字にする。太字にするのであれば b もあるが、違いは検索エンジンにまで影響を及ぼす点。-->
+                </p>
+            </div>
+            <div class="item">
+                <img src="images/item2.jpg" alt="オリジナルカプチーノ">
+                <p>     <!--p：段落タグ。この中に文章を記述する-->
+                    スペシャルNZブレンド<br>
+                    <strong>¥400-</strong>      <!--strong：テキスト就職タグの一つ。重要の意味を持ち、太字にする。太字にするのであれば b もあるが、違いは検索エンジンにまで影響を及ぼす点。-->
+                </p>
+            </div>
+            <div class="item">
+                <img src="images/item3.jpg" alt="オリジナルカプチーノ">
+                <p>     <!--p：段落タグ。この中に文章を記述する-->
+                    クリーミーアイスブレンド<br>
+                    <strong>¥400-</strong>      <!--strong：テキスト就職タグの一つ。重要の意味を持ち、太字にする。太字にするのであれば b もあるが、違いは検索エンジンにまで影響を及ぼす点。-->
+                </p>
+            </div>
+            <div class="item">
+                <img src="images/item4.jpg" alt="オリジナルカプチーノ">
+                <p>     <!--p：段落タグ。この中に文章を記述する-->
+                    ふわふわペアドーナツ<br>
+                    <strong>¥450-</strong>      <!--strong：テキスト就職タグの一つ。重要の意味を持ち、太字にする。太字にするのであれば b もあるが、違いは検索エンジンにまで影響を及ぼす点。-->
+                </p>
+            </div>
+            <div class="item">
+                <img src="images/item5.jpg" alt="オリジナルカプチーノ">
+                <p>     <!--p：段落タグ。この中に文章を記述する-->
+                    無農薬栽培ブルーベリーのレアチーズ<br>
+                    <strong>¥650-</strong>      <!--strong：テキスト就職タグの一つ。重要の意味を持ち、太字にする。太字にするのであれば b もあるが、違いは検索エンジンにまで影響を及ぼす点。-->
+                </p>
+            </div>
+            <div class="item">
+                <img src="images/item6.jpg" alt="オリジナルカプチーノ">
+                <p>     <!--p：段落タグ。この中に文章を記述する-->
+                    季節のクロワッサンフルーツサンド<br>
+                    <strong>¥600-</strong>      <!--strong：テキスト就職タグの一つ。重要の意味を持ち、太字にする。太字にするのであれば b もあるが、違いは検索エンジンにまで影響を及ぼす点。-->
+                </p>
+            </div>
+            <div class="item">
+                <img src="images/item7.jpg" alt="オリジナルカプチーノ">
+                <p>     <!--p：段落タグ。この中に文章を記述する-->
+                    果樹園の採れたてパンケーキ<br>
+                    <strong>¥1,210-</strong>      <!--strong：テキスト就職タグの一つ。重要の意味を持ち、太字にする。太字にするのであれば b もあるが、違いは検索エンジンにまで影響を及ぼす点。-->
+                </p>
+            </div>
+            <div class="item">
+                <img src="images/item8.jpg" alt="オリジナルカプチーノ">
+                <p>     <!--p：段落タグ。この中に文章を記述する-->
+                    自家製マロンクリームのシュー<br>
+                    <strong>¥600-</strong>      <!--strong：テキスト就職タグの一つ。重要の意味を持ち、太字にする。太字にするのであれば b もあるが、違いは検索エンジンにまで影響を及ぼす点。-->
+                </p>
+            </div>
+            <div class="item">
+                <img src="images/item9.jpg" alt="オリジナルカプチーノ">
+                <p>     <!--p：段落タグ。この中に文章を記述する-->
+                    ムース・ノッチオーラ<br>
+                    <strong>¥600-</strong>      <!--strong：テキスト就職タグの一つ。重要の意味を持ち、太字にする。太字にするのであれば b もあるが、違いは検索エンジンにまで影響を及ぼす点。-->
+                </p>
+            </div>
+        </div>
+
+        <!--br：強制改行、strong：重要、b：太字、cite：作品名、em：協調、i：斜体、mark：マーカー、small：注意書き・小文字、sub：下付き文字、sup：上付き文字-->
+
+    </main>
+    <!--メインここまで-->
+    <!--フッター-->
+    <hooter>                    <!--フッター部-->
+        <div class="gotop">
+            <a href="index.html#top"><img src="images/gotop.svg" alt="ページトップへ戻る"></a>
+        </div>
+        <p class="copyright">&copy; KUZIRA CAFE</p>   <!--文字実体参照により、&copy;で著作権記号を表示-->
+    </hooter>
+    <!--フッターここまで-->
+</body>
+</html>
